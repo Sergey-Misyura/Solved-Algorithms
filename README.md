@@ -1,2 +1,2 @@
-# Solved-Algorithms
-My Solved Algorithms.
+# Решенные алгоритмы.
+Мои решенные алгоритмы.
