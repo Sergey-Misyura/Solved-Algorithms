@@ -1,27 +1,22 @@
-# beautiful string
-import string
+with open("input.txt", encoding="UTF-8") as file_in:
+    k, S = int(file_in.readline()), file_in.readline().strip()
 
-alphabet = string.ascii_lowercase
-k = 2
-stri = 'helto'
-max_beauty = 0
+chars, max_chars, l_pointer, r_pointer, beauty = {}, 0, 0, 0, 0
 
-for letter in alphabet:
 
-    k_curr = k
-    left_border = 0
-    for right_border in range(len(stri)):
+while r_pointer < len(S):
 
-        if stri[right_border] != letter or (right_border == len(stri) - 1):
+    if S[r_pointer] not in chars:
+        chars[S[r_pointer]] = 0
 
-            if (k_curr == 0) or (right_border == len(stri) - 1):
-                cur_beauty = right_border - left_border
-                max_beauty = cur_beauty if cur_beauty > max_beauty else max_beauty
+    chars[S[r_pointer]] += 1
+    max_chars = max(max_chars, chars[S[r_pointer]])
 
-                while k_curr == 0:
-                    k_curr += 1 if stri[left_border] != letter else 0
-                    left_border += 1
+    if k < r_pointer - l_pointer - max_chars + 1:
+        chars[S[l_pointer]] -= 1
+        l_pointer += 1
 
-            k_curr -= 1
+    beauty = max(beauty, r_pointer - l_pointer + 1)
+    r_pointer += 1
 
-print(max_beauty)
+print(beauty)
