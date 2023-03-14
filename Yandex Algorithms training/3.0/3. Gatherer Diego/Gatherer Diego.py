@@ -1,38 +1,31 @@
-# DIego
-
-N = 3
-diegos_coll = [100, 1, 50]
-K = 3
-numbers = [300, 0, 75]
-counts = []
+N = int(input())
+diegos_coll = list(map(int, input().split()))
+K = int(input())
+numbers = list(map(int, input().split()))
 
 sorted_coll = sorted(list(set(diegos_coll)))
+coll_len = len(sorted_coll)
+searched_dict = {}
 
+for i in range(K):
+    num = numbers[i]
 
-def bin_search(num, lst):
-    if num > lst[-1]:
-        return len(lst)
-    elif num <= lst[0]:
-        return 0
+    if num <= sorted_coll[0]:
+        print(0)
+    elif num > sorted_coll[-1]:
+        print(coll_len)
+    elif num in searched_dict:
+        print(searched_dict[num])
     else:
-        low, high, searched = 0, len(lst) - 1, False
-        while (low <= high) and (not searched):
 
-            mid = (high + low) // 2
+        left, right = 0, len(sorted_coll) - 1
 
-            if lst[mid] < num:
-                if lst[mid + 1] < num:
-                    low = mid
-                else:
-                    searched = True
-
+        while left < right:
+            mid = (left + right) // 2
+            if num > sorted_coll[mid]:
+                left = mid + 1
             else:
-                high = mid
+                right = mid
+        searched_dict[num] = left
 
-        return len(lst[:mid]) + 1
-
-
-for num in numbers:
-    counts.append(bin_search(num, sorted_coll))
-
-print(counts)
+        print(left)
