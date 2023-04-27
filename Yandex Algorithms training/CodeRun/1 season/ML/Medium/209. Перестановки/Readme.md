@@ -3,9 +3,65 @@
 Есть два метода генерации случайных перестановок длины 8 — правильный и творческий. Код этих методов приведён ниже.
 
 Реализация на C++:
+```
+vector<int> RandomPermutation() {
+    vector<int> perm;
+    for (int i = 0; i < 8; ++i) {
+        perm.push_back(i);
+    }
+    std::random_device rd;
+    std::mt19937 g(rd());
+    shuffle(perm.begin(), perm.end(), g);
+    return perm;
+}
+
+vector<int> StupidPermutation() {
+    const vector<int> partialSums = {0,1,8,35,111,285,
+        628,1230,2191,3606,5546,8039,11056,14506,18242,
+        22078,25814,29264,32281,34774,36714,38129,39090,
+        39692,40035,40209,40285,40312,40319,40320};
+    int r = rand() % (partialSums.back() + 1);
+    int numInv = 0;
+    while (partialSums[numInv] < r) {
+        numInv++;
+    }
+    vector<int> perm;
+    for (int i = 0; i < 8; ++i) {
+        perm.push_back(i);
+    }
+    for (int step = 0; step < numInv; ++step) {
+        int t1 = rand() % 8;
+        int t2 = rand() % 8;
+        swap(perm[t1], perm[t2]);
+    }
+    return perm;
+}
+```
 
 Реализация на Python:
+```
+def RandomPermutation():
+    perm = list(range(8))
+    random.shuffle(perm)
+    return perm
 
+def StupidPermutation():
+    partialSums = [0,1,8,35,111,285,
+        628,1230,2191,3606,5546,8039,11056,14506,18242,  
+        22078,25814,29264,32281,34774,36714,38129,39090,  
+        39692,40035,40209,40285,40312,40319,40320]
+    r = random.randint(0, partialSums[-1])
+    numInv = 0
+    while partialSums[numInv] < r:
+        numInv += 1
+    perm = list(range(8))
+    for step in range(numInv):
+        t1 = random.randint(0, 7)
+        t2 = random.randint(0, 7)
+        perm[t1], perm[t2] = perm[t2], perm[t1]
+    return perm
+```
+ 
 В правильном методе генерируется случайная перестановка. В творческом сначала выбирается число numInv, соответствующее доле неправильно упорядоченных пар чисел в случайной перестановке. Массив partialSums выбран таким образом, что распределение величины numInv получается правильным.
 
 Дальше допущена ошибка, в результате которой не все перестановки будут получаться с одинаковыми вероятностями. Получив достаточно большое количество перестановок, сгенерированных одним из методов, можно угадать, что это был за метод.
