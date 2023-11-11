@@ -15,12 +15,20 @@ void unreserve(int seatNumber) Unreserves the seat with the given seatNumber.
 class SeatManager:
 
     def __init__(self, n: int):
-
+        self.not_reserved = []
+        self.last = 0
 
     def reserve(self) -> int:
-
+        if not self.not_reserved:
+            self.last += 1
+            return self.last
+        return heapq.heappop(self.not_reserved)
 
     def unreserve(self, seatNumber: int) -> None:
+        if seatNumber != self.last:
+            heapq.heappush(self.not_reserved, seatNumber)
+        else:
+            self.last -= 1
 
 
 # Your SeatManager object will be instantiated and called as such:
