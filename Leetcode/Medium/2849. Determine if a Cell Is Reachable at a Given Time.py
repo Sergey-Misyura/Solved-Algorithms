@@ -14,8 +14,7 @@ A cell's adjacent cells are the 8 cells around it that share at least one corner
 
 class Solution:
     def isReachableAtTime(self, sx: int, sy: int, fx: int, fy: int, t: int) -> bool:
-        time_ = max(abs(sx - fx), abs(sy - fy))
-        if time_:
-            return time_ <= t
-        else:
+        if sx == fx and sy == fy:
             return t != 1
+
+        return t >= max(abs(fx-sx), abs(fy-sy))
