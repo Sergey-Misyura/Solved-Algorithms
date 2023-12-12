@@ -1,6 +1,6 @@
 """
-417. Pacific Atlantic Water Flow
-(Medium complexity)
+815. Bus Routes
+(Hard complexity)
 
 You are given an array routes representing bus routes where routes[i] is a bus route that the ith bus repeats forever.
 
@@ -12,27 +12,25 @@ Return the least number of buses you must take to travel from source to target. 
 
 
 class Solution:
-    def numBusesToDestination(self, routes: List[List[int]], source: int, target: int) -> int:
-        if source == target:
-            return 0
-        graph = defaultdict(set)
-        for route, stops in enumerate(routes):
-            for stop in stops:
-                graph[stop].add(route)
+    def numBusesToDestination(self, routes, source, target):
 
-        cur_routes, visited, count = graph[source], set(), 0
+        stops = collections.defaultdict(set) # in every stop list of routes
+        for n, route in enumerate(routes):
+            for stop in route:
+                stops[stop].add(n)
 
-        while cur_routes:
-            next_routes = set()
+        buses_count = 0
+        bfs_list = [(source, buses_count)]
+        seen_stops = set([source])
 
-            for route in cur_routes:
-                visited.add(route)
-                for stop in routes[route]:
-                    if stop == target:
-                        return count + 1
-                    for next_route in graph[stop] - visited:
-                        next_routes.add(next_route)
+        for cur_stop, buses_count in bfs_list:
+            if cur_stop == target:
+                return buses_count
+            for cur_route in stops[cur_stop]:
+                for next_stop in routes[cur_route]:
+                    if next_stop not in seen_stops:
+                        bfs_list.append((next_stop, buses_count + 1))
+                        seen_stops.add(next_stop)
+                routes[cur_route] = []  # change seen route to []
 
-            cur_routes = next_routes
-            count += 1
         return -1
