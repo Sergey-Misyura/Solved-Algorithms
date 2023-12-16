@@ -8,9 +8,8 @@ An Anagram is a word or phrase formed by rearranging the letters of a different 
 typically using all the original letters exactly once.
 """
 
-from collections import Counter
-
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        
-        return True if Counter(s)==Counter(t) else False
+        if len(s) != len(t):
+            return False
+        return Counter(s) == Counter(t)
