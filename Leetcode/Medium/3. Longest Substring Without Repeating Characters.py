@@ -10,21 +10,17 @@ substring
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        if len(s) == 0:
-            return 0
-        counter = defaultdict(int)
-        max_len = first = second = 0
+        last = 0
+        prev = [-1] * 128
+        max_len = 0
 
-        while second < len(s):
-
-            counter[s[second]] += 1
-
-            while counter[s[second]] == 2:
-                counter[s[first]] -= 1
-                first += 1
-
-            max_len = len(s[first:second]) + 1 if len(s[first:second]) + 1 > max_len else max_len
-            second += 1
+        for i in range(len(s)):
+            sym_idx = ord(s[i])
+            if prev[sym_idx] >= last:
+                last = prev[sym_idx] + 1
+            prev[sym_idx] = i
+            max_len = max(max_len, i - last + 1)
 
         return max_len
+
 
