@@ -12,23 +12,27 @@ The testcases will be generated such that the answer is unique.
 
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
+        target = Counter(t)
+        remain = len(t)
+        start, end = 0, 0
+        lf = 0
 
-        char_count, len_substr = collections.Counter(t), len(t)
-        first = min_first = min_second = 0
+        for rg, char in enumerate(s, 1):
+            if target[char] > 0:
+                remain -= 1
+            target[char] -= 1
+            if remain == 0:
+                while lf < rg and target[s[lf]] < 0:
+                    target[s[lf]] += 1
+                    lf += 1
+                target[s[lf]] += 1
+                remain += 1
 
-        for second, char in enumerate(s, 1):
-            len_substr = len_substr - 1 if char_count[char] > 0 else len_substr
-            char_count[char] -= 1
+                if end == 0 or rg - lf < end - start:
+                    start, end = lf, rg
 
-            if len_substr == 0:
+                lf += 1
 
-                while first < second and char_count[s[first]] < 0:
-                    char_count[s[first]] += 1
-                    first += 1
-
-                if min_second == 0 or second - first <= min_second - min_first:
-                    min_second, min_first = second, first
-
-        return s[min_first:min_second]
+        return s[start:end]
 
 
