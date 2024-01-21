@@ -13,13 +13,11 @@ return the maximum amount of money you can rob tonight without alerting the poli
 
 class Solution:
     def rob(self, nums: List[int]) -> int:
-        n = len(nums)
-        sum_max = [0] * n
-        sum_max[0] = nums[0]
+        if len(nums) == 1:
+            return nums[0]
+        elif len(nums) > 2: 
+            nums[2] += nums[0]
+            for i in range(3, len(nums)):
+                nums[i] += max(nums[i-2], nums[i-3])
 
-        if (n > 1): sum_max[1] = max(nums[0], nums[1])
-
-        for i in range(2, n):
-            sum_max[i] = max(sum_max[i-1], sum_max[i-2] + nums[i])
-    
-        return sum_max[-1]
+        return max(nums[-1], nums[-2])
