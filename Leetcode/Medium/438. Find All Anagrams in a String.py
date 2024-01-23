@@ -9,16 +9,27 @@ An Anagram is a word or phrase formed by rearranging the letters of a different 
 typically using all the original letters exactly once.
 """
 
+
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
 
-        len_s, len_p, hash_s, hash_p, result = len(s), len(p), 0, 0, []
+        len_s, len_p = len(s), len(p)
+        if len_s < len_p:
+            return []
 
-        if len_s < len_p: return []
-        for i in range(len_p): hash_s, hash_p = hash_s + hash(s[i-1]), hash_p + hash(p[i])
+        s_count, p_count = [0] * 26, [0] * 26
+        ans = []
 
-        for i in range(len_p-1, len_s):
-            hash_s +=  hash(s[i]) - hash(s[i-len_p])
-            if hash_s==hash_p: result.append(i-len_p+1)
-        
-        return result
+        for i in range(len_p):
+            s_count[ord(s[i]) - 97] += 1
+            p_count[ord(p[i]) - 97] += 1
+        if s_count == p_count:
+            ans.append(0)
+
+        for i in range(len_p, len_s):
+            s_count[ord(s[i]) - 97] += 1
+            s_count[ord(s[i - len_p]) - 97] -= 1
+            if s_count == p_count:
+                ans.append(i - len_p + 1)
+
+        return ans
