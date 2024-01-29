@@ -1,6 +1,6 @@
 """
 54. Spiral Matrix
-(Easy complexity)
+(Medium complexity)
 
 Given an m x n matrix, return all elements of the matrix in spiral order.
 """
