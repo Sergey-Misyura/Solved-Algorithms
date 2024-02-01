@@ -9,12 +9,11 @@ You must implement a solution with a linear runtime complexity and use only cons
 
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        
-        single_dict={}
+        single_set = set()
         for num in nums:
-            if num in single_dict:
-                single_dict.pop(num)
+            if num in single_set:
+                single_set.remove(num)
             else:
-                single_dict[num]=1
-        
-        return single_dict.popitem()[0]
+                single_set.add(num)
+
+        return single_set.pop()
