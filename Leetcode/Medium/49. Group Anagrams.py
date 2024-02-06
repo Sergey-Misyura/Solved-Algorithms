@@ -10,9 +10,12 @@ An Anagram is a word or phrase formed by rearranging the letters of a different 
 
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+
         anagrams = defaultdict(list)
         for word in strs:
-            sortedWord = tuple(sorted(word))
-            anagrams[sortedWord].append(word)
+            sym_arr = [0] * 26
+            for sym in word:
+                sym_arr[ord(sym) - 97] += 1
+            anagrams[tuple(sym_arr)].append(word)
 
-        return (list(anagrams.values()))
+        return anagrams.values()
