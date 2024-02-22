@@ -1,6 +1,6 @@
 """
 108. Convert Sorted Array to Binary Search Tree
-(Medium complexity)
+(Easy complexity)
 
 Given an integer array nums where the elements are sorted in ascending order, convert it to a
 height-balanced
