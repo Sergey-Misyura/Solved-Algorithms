@@ -1,14 +1,13 @@
-N, K = map(int, input().split())
-wires = []
+N, K = map(int, input().split())  # N - проводов, K - отрезков
+wires = []  # массив проводов
 for _ in range(N):
     wires.append(int(input().strip()))
 
+# частный случай
 if sum(wires) < K:
-    # отдельнообрабатываемый случай
     print(0)
 else:
-    # не обязательно все провода делить, поэтому rg = max(wires)
-    lf, rg = 0, max(wires)
+    lf, rg = 0, max(wires)  # границы бинарного поиска по максимальной длине куска провода, rg = max(wires)
     # правый бин поиск
     while lf < rg:
         # считаем центр

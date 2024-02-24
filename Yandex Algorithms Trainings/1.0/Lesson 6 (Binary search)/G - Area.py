@@ -1,8 +1,8 @@
-n = int(input().strip())
-m = int(input().strip())
-t = int(input().strip())
+n = int(input().strip())  # ширина площади
+m = int(input().strip())  # длина площади
+t = int(input().strip())  # количество имеющихся плиток
 
-lf, rg = 0, max(n//2, m//2)
+lf, rg = 0, max(n//2, m//2)  # границы бин поиска - от 0 до половины большей стороны
 # правый бин поиск
 while lf < rg:
     # считаем центр
