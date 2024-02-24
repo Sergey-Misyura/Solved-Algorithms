@@ -5,13 +5,13 @@
 Полностью решенные тренировки 1.0. К каждому решению в файле .py есть комментарии и объяснения.
 
 - :white_check_mark: [10/10] [Домашнее задание #1 "Сложность, тестирование, особые случаи"](Lesson_1_(Complexity,_testing,_special_cases)/)
-- :white_check_mark: [10/10] [Домашнее задание #2 "Линейный поиск"](Lesson 2 (Linear search)/)
-- :white_check_mark: [10/10] [Домашнее задание #3 "Множества"](Lesson 3 (Sets)/)
-- :white_check_mark: [10/10] [Домашнее задание #4 "Словари и сортировка подсчётом"](Lesson 4 (Dictionaries and counting sort)/)
-- :white_check_mark: [10/10] [Домашнее задание #5 "Префиксные суммы и два указателя"](Lesson 5 (Prefix sums and two pointers)/)
-- :white_check_mark: [11/11] [Домашнее задание #6 "Бинарный поиск"](Lesson 6 (Binary search)/)
-- :white_check_mark: [10/10] [Домашнее задание #7 "Сортировка событий"](Lesson 7 (Sorting events)/)
-- :white_check_mark: [10/10] [Домашнее задание #8 "Деревья"](Lesson 8 (Trees)/)
+- :white_check_mark: [10/10] [Домашнее задание #2 "Линейный поиск"](Lesson_2_(Linear_search)/)
+- :white_check_mark: [10/10] [Домашнее задание #3 "Множества"](Lesson_3_(Sets)/)
+- :white_check_mark: [10/10] [Домашнее задание #4 "Словари и сортировка подсчётом"](Lesson_4_(Dictionaries_and_counting_sort)/)
+- :white_check_mark: [10/10] [Домашнее задание #5 "Префиксные суммы и два указателя"](Lesson_5_(Prefix_sums_and_two_pointers)/)
+- :white_check_mark: [11/11] [Домашнее задание #6 "Бинарный поиск"](Lesson_6_(Binary_search)/)
+- :white_check_mark: [10/10] [Домашнее задание #7 "Сортировка событий"](Lesson_7_(Sorting_events)/)
+- :white_check_mark: [10/10] [Домашнее задание #8 "Деревья"](Lesson_8_(Trees)/)
 
 
 ---
