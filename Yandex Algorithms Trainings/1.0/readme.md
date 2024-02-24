@@ -4,7 +4,7 @@
 
 Полностью решенные тренировки 1.0. К каждому решению в файле .py есть комментарии и объяснения.
 
-- :white_check_mark: [10/10] [Домашнее задание #1 "Сложность, тестирование, особые случаи"](Lesson 1 (Complexity, testing, special cases)/)
+- :white_check_mark: [10/10] [Домашнее задание #1 "Сложность, тестирование, особые случаи"](Lesson_1_(Complexity,_testing,_special_cases)/)
 - :white_check_mark: [10/10] [Домашнее задание #2 "Линейный поиск"](Lesson 2 (Linear search)/)
 - :white_check_mark: [10/10] [Домашнее задание #3 "Множества"](Lesson 3 (Sets)/)
 - :white_check_mark: [10/10] [Домашнее задание #4 "Словари и сортировка подсчётом"](Lesson 4 (Dictionaries and counting sort)/)
