@@ -1,6 +1,6 @@
 """
 1249. Minimum Remove to Make Valid Parentheses
-(Hard complexity)
+(Medium complexity)
 
 Given a string s of '(' , ')' and lowercase English characters.
 
