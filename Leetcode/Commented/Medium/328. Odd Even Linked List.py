@@ -20,16 +20,16 @@ You must solve the problem in O(1) extra space complexity and O(n) time complexi
 class Solution:
     def oddEvenList(self, head: Optional[ListNode]) -> Optional[ListNode]:
 
-        if not head:
+        if not head:  # частный случай
             return head
 
-        odd = even = head
-        even = even.next
-        even_head = even
-        while even and even.next:
-            odd.next, even.next = odd.next.next, even.next.next
-            odd, even = odd.next, even.next
-
+        odd = even = head  # указатели четного и нечетного узлов
+        even = even.next  # переход по четному
+        even_head = even  # указатель на начало четного
+        while even and even.next:  # пока есть четный и узел за ним
+            odd.next, even.next = odd.next.next, even.next.next  # соединяем четный и нечетные узлы через 1
+            odd, even = odd.next, even.next  # переходим к следующим узлам по соединениям
+        # добавляем к списку нечетных - список четных
         odd.next = even_head
-
+        # ответ
         return head
