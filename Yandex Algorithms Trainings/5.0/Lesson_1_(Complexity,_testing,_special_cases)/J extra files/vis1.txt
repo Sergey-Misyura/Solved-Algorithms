@@ -1,0 +1,6 @@
+120 10 8
+4
+0 0 40 10 word:start
+48 0 12 5 embedded
+60 0 25 58 surrounded
+85 0 24 10 word:and
