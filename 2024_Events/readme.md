@@ -6,4 +6,5 @@
 
 - [Yandex Intern Data Science Meetup] :white_check_mark:
 - [Yandex Winter Job Fair] :white_check_mark:
+- [Yandex Summer School of Analysts-developer] :white_check_mark:
 ---
