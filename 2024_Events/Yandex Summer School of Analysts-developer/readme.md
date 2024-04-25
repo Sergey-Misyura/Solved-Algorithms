@@ -13,3 +13,4 @@
 	- :negative_squared_cross_mark: F задача. Частичное решение, 76/?? баллов.
 
 ---
+![image](https://github.com/Sergey-Misyura/Solved-Algorithms/assets/101212758/ae52a1da-7607-4655-967e-0c9dff7d5b95)
