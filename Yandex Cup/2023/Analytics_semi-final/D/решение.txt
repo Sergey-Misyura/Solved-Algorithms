@@ -1,0 +1,13 @@
+H > F	H > F
+E > J	H > F, E > J
+C > F	H,C > F, E > J
+E > F	H,C > F, E > J, E > F ==> H, C, E > F
+
+E > H 4 к 3	E > H; C
+
+J = F 4 к 4	
+H > F, C > F 	8 к 1, 6 к 3  => H > C => E > H > C
+
+E > C 5 к 3	E > H > C
+
+answer E H C
