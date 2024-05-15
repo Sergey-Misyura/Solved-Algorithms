@@ -14,23 +14,24 @@ Return a list of all the people that have the secret after all the meetings have
 
 class Solution:
     def findAllPeople(self, n: int, meetings: List[List[int]], firstPerson: int) -> List[int]:
-        can = {0, firstPerson}
-        for _, grp in groupby(sorted(meetings, key=lambda x: x[2]), key=lambda x: x[2]):
-            queue = set()
-            graph = defaultdict(list)
-            for x, y, _ in grp:
+        can = {0, firstPerson}  # множество людей с секретом
+        for _, grp in groupby(sorted(meetings, key=lambda x: x[2]), key=lambda x: x[2]):  # проходим по группам встреч по времени
+            queue = set()  # текущая очередь людей передающих секрет
+            graph = defaultdict(list)  # текущий граф
+            for x, y, _ in grp:  # добавляем людей в граф
                 graph[x].append(y)
                 graph[y].append(x)
-                if x in can:
+                if x in can:  # если первый может передать секрет - добавляем в очередь
                     queue.add(x)
-                if y in can:
+                if y in can:  # если второй может передать секрет - добавляем в очередь
                     queue.add(y)
 
             queue = deque(queue)
-            while queue:
-                x = queue.popleft()
-                for y in graph[x]:
-                    if y not in can:
-                        can.add(y)
-                        queue.append(y)
+            while queue:  # пока есть очередь
+                x = queue.popleft()  # достаем человека из очереди
+                for y in graph[x]:  # проходим по связанным с x людям
+                    if y not in can:  # если связанный человек не в can
+                        can.add(y)  # добавляем в can
+                        queue.append(y)  # добавляем в очередь
+        # ответ
         return can
