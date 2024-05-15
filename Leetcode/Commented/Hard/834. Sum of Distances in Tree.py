@@ -17,19 +17,20 @@ class Solution:
             graph[a].append(b)
             graph[b].append(a)
 
-        count = [1] * n  # текущее число вершин
+        count = [1] * n  # текущее число узлов в поддереве
         ans = [0] * n  # ответ
 
-        def dfs(node, par):  # dfs подсчитывает количество вершин от родителя к ребенку (сумму расстояний)
+        def dfs(node, par):  # dfs подсчитывает количество узлов в поддереве и сумму расстояний в поддереве
             for child in graph[node]:
                 if child != par:
                     dfs(child, node)
-                    count[node] += count[child]  # увеличиваем количество вершин у родителя
-                    ans[node] += ans[child] + count[child]  # увеличиваем ответ на ответ по ребенку и количество по ребенку
+                    count[node] += count[child]  # увеличиваем количество узлов в поддереве
+                    ans[node] += ans[child] + count[child]  # увеличиваем расстояние в поддереве на расстояние у ребенка
 
-        def dfs2(node, par):  # dfs2 уменьшает ответ в узле на расстояние повторно посчитанных вершин от него
+        def dfs2(node, par):  # dfs2 корректирует ans, при движении корневого узла по дереву
             for child in graph[node]:
                 if child != par:
+                    # при движении корневого узла по дереву уменьшаем расстояние на число узлов в поддереве и увеличиваем на все оставшиеся узлы
                     ans[child] = ans[node] - count[child] + (n - count[child])
                     dfs2(child, node)
 
